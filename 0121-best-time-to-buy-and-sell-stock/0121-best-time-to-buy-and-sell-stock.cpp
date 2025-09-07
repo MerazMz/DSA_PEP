@@ -6,13 +6,15 @@ public:
             prices[i]=prices[i+1]-prices[i];
         }
         prices[n-1]=0;
-        int currSum=0,maxSum=INT_MIN;
+        int currSum=0;
+        int maxSum=INT_MIN;
         for(int i=0;i<n;i++){
-            currSum += prices[i];
-            maxSum = max(maxSum,currSum);
+            currSum=currSum+prices[i];
+            maxSum=max(currSum,maxSum);
             if(currSum<0) currSum=0;
         }
         if(maxSum>0) return maxSum;
-        return 0; 
+        else return 0;
+
     }
 };
