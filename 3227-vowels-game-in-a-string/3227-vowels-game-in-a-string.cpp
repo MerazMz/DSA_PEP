@@ -8,12 +8,6 @@ public:
         return false;
     }
     bool doesAliceWin(string s) {
-        bool ans=false;
-        for(char c:s){
-            if(isVowel(c)){
-                ans=true;
-            }
-        }
-        return ans;
+        return s.find_first_of("aeiou") != string::npos;
     }
 };
