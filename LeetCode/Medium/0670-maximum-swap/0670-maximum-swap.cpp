@@ -1,21 +1,26 @@
 class Solution {
 public:
     int maximumSwap(int num) {
-        string digi = to_string(num);
-        vector<int> pos(10,-1);
-        for(int i=0;i<digi.size();i++){
-            pos[digi[i]-'0']=i;
+        string s = to_string(num);
+        //   maxi    index  
+        vector<pair<int,    int>> p(s.size());
+        
+            int maxi=-1;
+            int maxiIdx=-1;
+        for(int i=s.size()-1;i>=0;i--){ //right to left
+            if(maxi<s[i]-'0'){
+                maxi=s[i]-'0';
+                maxiIdx=i;
+            }
+            p[i]={maxi,maxiIdx};
         }
 
-        for (int i = 0; i < digi.size(); i++) {
-            for (int d = 9; d > digi[i] - '0'; d--) {
-                if (pos[d] > i) {
-                    swap(digi[i], digi[pos[d]]);
-                    return stoi(digi);
-                }
+        for(int i=0;i<s.size();i++){  //left to right
+            if(s[i]-'0'<p[i].first){
+                swap(s[i],s[p[i].second]);
+                return stoi(s);
             }
         }
         return num;
-
     }
 };
