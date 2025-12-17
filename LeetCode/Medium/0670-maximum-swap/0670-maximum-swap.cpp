@@ -2,11 +2,11 @@ class Solution {
 public:
     int maximumSwap(int num) {
         string s = to_string(num);
-        //   maxi    index  
+        //          maxi    index  
         vector<pair<int,    int>> p(s.size());
         
-            int maxi=-1;
-            int maxiIdx=-1;
+        int maxi=-1;
+        int maxiIdx=-1;
         for(int i=s.size()-1;i>=0;i--){ //right to left
             if(maxi<s[i]-'0'){
                 maxi=s[i]-'0';
